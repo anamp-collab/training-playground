@@ -13,12 +13,10 @@ pipeline {
 		environment name: 'TOEXECUTE', value: 'build'
 		}
 	}
-	}
-            stage('test') {
+	stage('test') {
                 when {
 			environmet name:'TOEXECUTE', value: 'test'
 		}
             }
         }
-    }
-}
+   }
