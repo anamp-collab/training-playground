@@ -4,11 +4,20 @@ pipeline {
 			image 'alpine:latest' 
 		}
 	}
+	parameters{
+		string(name: 'TOEXECUTE', defaultName: 'defaultExecute', description: 'ToExecute?')
+	}
     stages {
         stage('build') {
-            steps {
-                echo "$NAME"
-                echo "$AGE"
+	when {
+		environment name: 'TOEXECUTE', value: 'build'
+		}
+	}
+	}
+            stage('test') {
+                when {
+			environmet name:'TOEXECUTE', value: 'test'
+		}
             }
         }
     }
