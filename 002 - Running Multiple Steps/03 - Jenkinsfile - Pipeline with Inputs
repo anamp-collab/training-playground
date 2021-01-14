@@ -1,22 +1,28 @@
 pipeline {
-    agent { 
-		docker { 
-			image 'alpine:latest' 
-		}
-	}
-	parameters{
-		string(name: 'TOEXECUTE', defaultName: 'defaultExecute', description: 'ToExecute?')
-	}
-    stages {
-        stage('build') {
-	when {
-		environment name: 'TOEXECUTE', value: 'build'
-		}
-	}
-	stage('test') {
-                when {
-			environmet name:'TOEXECUTE', value: 'test'
-		}
-            }
+    agent {
+        docker {
+            image 'alpine:latest' 
         }
-   }
+    }
+    parameters {
+        choice(name: 'TOEXECUTE', choices: ['build', 'test'], description: 'ToExecute?')
+        }
+    stages {
+            stage('build') {
+            when {
+                environment name: 'TOEXECUTE', value: 'build'
+            }
+            steps {
+                echo 'executing the build stage (from groovy)'
+            }
+             }
+         stage('test') {
+            when {
+                environment name: 'TOEXECUTE', value: 'test'
+            }
+            steps {
+                sh "echo 'executing the build stage'"
+            }
+             }
+        }
+}
