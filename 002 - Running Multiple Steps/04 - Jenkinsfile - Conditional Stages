@@ -1,11 +1,9 @@
 pipeline {
     agent any
-    
     parameters {
                     string(name: 'NAME', defaultValue: 'Mr Jenkins', description: 'What is your name')
 		    string(name: 'AGE', defaultValue: '0', description: 'What is your age')
-                }
-		
+		  }
     stages{
     	stage('build){
 	steps{
