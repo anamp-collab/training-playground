@@ -5,7 +5,7 @@ pipeline {
 		    string(name: 'AGE', defaultValue: '0', description: 'What is your age')
 		  }
     stages{
-    	stage('build){
+    	stage('build'){
 	steps{
      		echo "$NAME"
 		echo "$AGE"
