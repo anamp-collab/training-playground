@@ -11,7 +11,7 @@ pipeline {
        			 [configFile(fileId: 'settings.xml', variable: 'MAVEN_SETTINGS')]) {
         		sh 'mvn -s $MAVEN_SETTINGS clean package'
    		 }
-                sh "mvn install -s MAVEN_SETTINGS -f 005 - Recording Test Results and Artifacts/02 - Java Unit Tests/"
+                sh "mvn install -s MAVEN_SETTINGS -f '005 - Recording Test Results and Artifacts/02 - Java Unit Tests'"
             }
         }
     }
